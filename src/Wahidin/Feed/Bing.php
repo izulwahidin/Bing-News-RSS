@@ -60,10 +60,10 @@ class Bing
         $res = [];
         foreach ($rss->item as $item) {
             $d = json_decode(json_encode($item));
-            if (str_contains($d->{"News:Image"}, "&")) {
+            if (isset($d->{"News:Image"}) && str_contains($d->{"News:Image"}, "&")) {
                 $image = explode("&", $d->{"News:Image"})[0];
             } else {
-                $image = $d->{"News:Image"};
+                $image = $d->{"News:Image"} ?? null;
             }
             $res[] = [
                 "title" => $d->title,
