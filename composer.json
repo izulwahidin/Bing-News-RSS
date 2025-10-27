@@ -1,0 +1,14 @@
+{
+    "require": {
+        "symfony/dom-crawler": "^7.3",
+        "symfony/css-selector": "^7.3",
+        "dg/rss-php": "^1.5",
+        "fivefilters/readability.php": "^3.3",
+        "bramus/router": "^1.6"
+    },
+    "autoload": {
+        "psr-4": {
+          "Wahidin\\": "src/Wahidin/"
+        }
+    }
+}
