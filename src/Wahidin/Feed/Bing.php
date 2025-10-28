@@ -47,7 +47,7 @@ class Bing
                 "title" => $node->filter(".news_title")->text(""),
                 "description" => $node->filter(".news_snpt")->text(""),
                 "url" => $node->attr("href"),
-                "full_content" => "https://fidesmedia.h3h3.eu.org/view/" . base64_encode($node->attr("href")),
+                "full_content" => "https://fidesmedia.h3h3.eu.org/view/" . base64_encode(urlencode($node->attr("href"))),
                 "image" =>  "https://bing.com/th?id=" . $imgData["id"],
                 "source" => $node->filter(".na_footer_name")->text(""),
             ];
@@ -70,7 +70,7 @@ class Bing
                 "title" => $d->title,
                 "description" => $d->description,
                 "url" => $d->link,
-                "full_content" => "https://fidesmedia.h3h3.eu.org/view/" . base64_encode($d->link),
+                "full_content" => "https://fidesmedia.h3h3.eu.org/view/" . base64_encode(urlencode($d->link)),
                 "image" =>  $image ?? null,
                 "source" => $d->{"News:Source"} ?? null,
             ];

@@ -1,4 +1,5 @@
 <?php
+// error_reporting(0);
 require __DIR__ . "/vendor/autoload.php";
 
 use fivefilters\Readability\Readability;
@@ -28,9 +29,11 @@ $router->get("/", function () {
 
 
 $router->get("/view/{url}", function ($url) {
-    $decodedUrl = base64_decode($url);
+    $decodedUrl = urldecode(base64_decode($url));
     $readability = new Readability(new Configuration());
     $html = file_get_contents($decodedUrl);
+
+    $res = [];
     try {
         $readability->parse($html);
         $res = [
