@@ -66,6 +66,10 @@ class Bing
             } else {
                 $image = $d->{"News:Image"} ?? null;
             }
+
+            if (!is_null($image) && !str_contains($image, "http")) {
+                $image = "https://bing.com{$image}";
+            }
             $res[] = [
                 "title" => $d->title,
                 "description" => $d->description,
